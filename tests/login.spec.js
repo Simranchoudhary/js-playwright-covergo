@@ -2,7 +2,7 @@ const { test, expect } = require('@playwright/test');
 const { LoginPage } = require('../pages/LoginPage');
 const testData = require('../utils/testData');
 
-test.describe('Login Tests - DemoBlaze', () => {
+test.describe('Login Functionality - DemoBlaze', () => {
   let loginPage;
 
   test.beforeEach(async ({ page }) => {
@@ -10,12 +10,12 @@ test.describe('Login Tests - DemoBlaze', () => {
     await loginPage.navigate();
   });
 
-  test('should login with valid credentials', async ({ page }) => {
+  test('should successfully log in with valid credentials', async ({ page }) => {
     await loginPage.login(testData.validUser.email, testData.validUser.password);
     await expect(page.locator('#nameofuser')).toBeVisible();
   });
 
-  test('should show alert on invalid credentials', async ({ page }) => {
+  test('should display alert when credentials are invalid', async ({ page }) => {
     page.on('dialog', async dialog => {
       expect(dialog.message()).toContain('User does not exist');
       await dialog.accept();
@@ -24,7 +24,7 @@ test.describe('Login Tests - DemoBlaze', () => {
     await loginPage.login('wrong_user', 'wrong_pass');
   });
 
-  test('should show alert on empty credentials', async ({ page }) => {
+  test('should display alert when username and password are empty', async ({ page }) => {
     page.on('dialog', async dialog => {
       expect(dialog.message()).toContain('Please fill');
       await dialog.accept();
@@ -33,10 +33,9 @@ test.describe('Login Tests - DemoBlaze', () => {
     await loginPage.login('', '');
   });
 
-  test('should logout successfully', async ({ page }) => {
-    await loginPage.login('simran.choudhary@gmail.com', '123');
+  test('should log out and return to login state', async ({ page }) => {
+    await loginPage.login(testData.validUser.email, testData.validUser.password);
     await page.click('#logout2');
     await expect(page.locator('#login2')).toBeVisible();
   });
-  
 });
