@@ -55,10 +55,10 @@ All test cases follow the **Page Object Model (POM)** design pattern and are str
 
 ### 📦 UI Components
 
-11. 📂 Category filter working (`tests/category.spec.js`)
-12. 🖼️ Validate no broken product images (`tests/image.spec.js`)
-13. 🔔 Alert appears on add-to-cart (`tests/alert.spec.js`)
-14. 🧳 Place order modal opens and closes (`tests/modal.spec.js`)
+11.  Category filter working (`tests/category.spec.js`)
+12.  Validate no broken product images (`tests/image.spec.js`)
+13.  Alert appears on add-to-cart (`tests/alert.spec.js`)
+14.  Place order modal opens and closes (`tests/modal.spec.js`)
 
 ---
 
